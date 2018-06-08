@@ -1,0 +1,67 @@
+<head>
+  <!-- Тег meta для указания кодировки -->
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+    <p>Начало документа...</p>
+  <script>
+  
+
+function Calculator() 
+{
+
+  var methods = // создаем новый объект "методы"
+  {
+  
+    "-": function(a, b) // с полями "-"
+	{
+      return a - b;
+    },
+    "+": function(a, b) // и "+"
+	{
+      return a + b;
+    }
+  };
+
+  this.calculate = function(str) 
+  {
+    var split = str.split(' '), //разб. строку, где разделитель - "_"
+      a = +split[0],  //  1 операнд
+      op = split[1],
+      b = +split[2];    //  2 операнд
+
+    if (!methods[op] || isNaN(a) || isNaN(b)) //проверка на ошибки
+	{
+      return NaN;
+    }
+
+    return methods[op](a, b);
+  }
+
+  this.addMethod = function(name, func) 
+  {
+    methods[name] = func;
+  };
+}
+
+var calc = new Calculator;
+
+calc.addMethod("*", function(a, b) 
+{
+  return a * b;
+});
+calc.addMethod("/", function(a, b) 
+{
+  return a / b;
+});
+calc.addMethod("**", function(a, b) 
+{
+  return Math.pow(a, b);
+});
+
+var result = calc.calculate("2 ** 3");
+alert( result ); // 8
+
+  </script>

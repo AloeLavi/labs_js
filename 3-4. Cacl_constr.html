@@ -1,0 +1,34 @@
+<head>
+  <!-- Тег meta для указания кодировки -->
+  <meta charset="utf-8">
+</head>
+
+<body>
+
+    <p>Начало документа...</p>
+  <script>
+  
+
+function calculator(name) {
+  this.read = function() {
+    this.a = +prompt('Input 1st var', 0);
+	this.b = +prompt('Input 2nd var', 0);
+  };
+  
+  this.sum = function() {
+    return this.a + this.b;
+  };
+  
+  this.mul = function() {
+    return this.a * this.b;
+  };
+  
+}
+
+var calc = new calculator();
+calc.read();
+
+alert( "Сумма=" + calc.sum() );
+alert( "Произведение=" + calc.mul() );
+
+  </script>
